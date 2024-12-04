@@ -57,8 +57,9 @@ const AccessForm = () => {
       );
       setLoading(false);
 
-      if (response.status === 201) {
+      if (response.status === 201 && response.data.token == "access") {
         // localStorage.setItem("token", JSON.stringify(response.status));
+        // console.log(response)
         toast({
           title: "Email verified. You are ready to play the simulation",
           status: "success",
@@ -70,6 +71,15 @@ const AccessForm = () => {
         setEmail("");
         localStorage.setItem("token", JSON.stringify("201"));
         navigate("/DSRBC");
+      } 
+      else if(response.status === 201 && response.data.token == "no access"){
+        toast({
+          title: "Simulation access is unavailable. Please contact your administrator.",
+          status: "error",
+          duration: 6000,
+          isClosable: true,
+          position: "top",
+        });
       } else if (response.status === 400) {
         toast({
           title: "Email is not registered.",
