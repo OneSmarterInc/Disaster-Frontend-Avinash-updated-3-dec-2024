@@ -8,6 +8,7 @@ import {
   ModalBody,
   ModalFooter,
   Tooltip,
+  CloseButton,
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
@@ -102,7 +103,8 @@ const Morning = () => {
     setPauseBtn,
     setComponent,
     setSelectedSection,
-    flag5, setFlag5
+    flag5,
+    setFlag5,
   } = useContext(MyContext);
 
   const handlePause = () => {
@@ -125,7 +127,6 @@ const Morning = () => {
   };
 
   const scrollToBottom = () => {
-    
     const container = chatContainerRef.current;
     if (container) {
       container.scrollTop = container.scrollHeight;
@@ -892,11 +893,17 @@ const Morning = () => {
                     >
                       {showBoxContent1 && (
                         <>
-                          <Image
-                            w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
-                            m={"auto"}
-                            src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
-                          />
+                          <Flex>
+                            <Image
+                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                              m={"auto"}
+                              src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
+                            />
+                            <CloseButton
+                              onClick={() => handleChange2("No Feedback")}
+                            />
+                          </Flex>
+
                           <Flex
                             className="box"
                             mb={5}
@@ -1148,11 +1155,17 @@ const Morning = () => {
 
                       {showBoxContent2 && (
                         <>
-                          <Image
-                            w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
-                            m={"auto"}
-                            src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
-                          />
+                          <Flex>
+                            <Image
+                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
+                              m={"auto"}
+                              src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
+                            />
+                            <CloseButton
+                              onClick={() => handleChange("No Feedback")}
+                            />
+                          </Flex>
+
                           <Flex
                             className="box"
                             mb={"5"}
@@ -1404,7 +1417,7 @@ const Morning = () => {
                   </>
                 )}
 
-{!flag5 && showBox2 && (
+                {!flag5 && showBox2 && (
                   <Box
                     bgColor={"#030405"}
                     color={"white"}
@@ -1414,7 +1427,13 @@ const Morning = () => {
                     pt={3}
                     pb={3}
                   >
-                    <Text textAlign={"center"} fontSize={isMobile ? "15" : "20"}>Chat ends here, you can click on next button to continue your chat</Text>
+                    <Text
+                      textAlign={"center"}
+                      fontSize={isMobile ? "15" : "20"}
+                    >
+                      Chat ends here, you can click on next button to continue
+                      your chat
+                    </Text>
                   </Box>
                 )}
 

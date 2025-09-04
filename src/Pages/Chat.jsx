@@ -8,6 +8,7 @@ import {
   RadioGroup,
   Radio,
   Tooltip,
+  CloseButton,
 } from "@chakra-ui/react";
 
 import { Box, Button, Flex, Text, Image } from "@chakra-ui/react";
@@ -69,7 +70,7 @@ const Chat = () => {
     setValue(value);
     setSelectedSection("BringDown");
     setFlag1(false);
-    
+
     Cookies.set("day1morning2", value);
   };
 
@@ -207,6 +208,38 @@ const Chat = () => {
 
   const userAvatarSize = isMobile ? "20px" : "55px";
   const messageFontSize = isMobile ? "16px" : "18px";
+
+  //  useEffect(() => {
+  //   let timeout;
+
+  //   if (flag1 && showBox && showBoxContent1 &&  !value1) {
+  //     timeout = setTimeout(() => {
+  //       if (!value1) {
+  //         // Default fallback value or first radio option
+  //         const defaultValue = "No feedback";
+  //         handleChange2(defaultValue);
+  //       }
+  //     }, 2000); // 2 seconds
+  //   }
+
+  //   return () => clearTimeout(timeout);
+  // }, [flag1,showBoxContent1, showBox, value1]);
+
+  // useEffect(() => {
+  //   let timeout;
+
+  //   if (showBoxContent2 &&  !value) {
+  //     timeout = setTimeout(() => {
+  //       if (!value) {
+  //         // Default fallback value or first radio option
+  //         const defaultValue = "No feedback";
+  //         handleChange(defaultValue);
+  //       }
+  //     }, 2000); // 2 seconds
+  //   }
+
+  //   return () => clearTimeout(timeout);
+  // }, [showBoxContent2,value]);
 
   return (
     <>
@@ -567,11 +600,15 @@ const Chat = () => {
                     >
                       {showBoxContent1 && (
                         <>
-                          <Image
-                            w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
-                            m={"auto"}
-                            src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
-                          />
+                          <Flex>
+                            <Image
+                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                              m={"auto"}
+                              src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
+                            />
+                            <CloseButton onClick={()=>handleChange2('No Feedback')} />
+                          </Flex>
+
                           <Flex
                             className="box"
                             mb={5}
@@ -823,11 +860,15 @@ const Chat = () => {
 
                       {showBoxContent2 && (
                         <>
+                        <Flex>
                           <Image
                             w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
                             m={"auto"}
                             src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
                           />
+                           <CloseButton onClick={()=>handleChange('No Feedback')} />
+                        </Flex>
+                          
                           <Flex
                             className="box"
                             mb={"5"}
@@ -1089,7 +1130,13 @@ const Chat = () => {
                     pt={3}
                     pb={3}
                   >
-                    <Text textAlign={"center"} fontSize={isMobile ? "15" : "20"}>Chat ends here, you can click on next button to continue your chat</Text>
+                    <Text
+                      textAlign={"center"}
+                      fontSize={isMobile ? "15" : "20"}
+                    >
+                      Chat ends here, you can click on next button to continue
+                      your chat
+                    </Text>
                   </Box>
                 )}
                 <div ref={spacerRef} style={{ height: "40px" }}></div>
