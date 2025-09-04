@@ -8,6 +8,7 @@ import {
   useDisclosure,
   Tooltip,
   ModalCloseButton,
+  CloseButton,
 } from "@chakra-ui/react";
 import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Box, Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
@@ -467,8 +468,8 @@ const Morning5 = () => {
   const closePopup12 = () => {
     setDay5Popup12(false);
     setSelectedValue(value);
-    setFlag7(false)
-    setSelectedSection("deliverable")
+    setFlag7(false);
+    setSelectedSection("deliverable");
   };
 
   const isMobile = window.innerWidth <= 600; // Define your mobile breakpoint
@@ -1478,11 +1479,17 @@ const Morning5 = () => {
                     >
                       {showBoxContent1 && (
                         <>
-                          <Image
-                            w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
-                            m={"auto"}
-                            src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
-                          />
+                          <Flex>
+                            <Image
+                              w={isMobile ? "80%" : "50%"} // Adjust the image width for mobile view
+                              m={"auto"}
+                              src="https://img.freepik.com/free-vector/text-files-concept-illustration_114360-4402.jpg?t=st=1696612249~exp=1696612849~hmac=fb707e6cc9f86b8c9c7c512cf3910dfc942bd0073ccf581840b9772cf4deb68e"
+                            />
+                            <CloseButton
+                              onClick={() => handleChange2("No Feedback")}
+                            />
+                          </Flex>
+
                           <Flex
                             className="box"
                             mb={5}
@@ -1734,11 +1741,17 @@ const Morning5 = () => {
 
                       {showBoxContent2 && (
                         <>
-                          <Image
-                            w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
-                            m={"auto"}
-                            src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
-                          />
+                          <Flex>
+                            <Image
+                              w={isMobile ? "70%" : "50%"} // Adjust the image width for mobile view
+                              m={"auto"}
+                              src="https://img.freepik.com/free-vector/business-decisions-concept-illustration_114360-4096.jpg?w=740&t=st=1696672316~exp=1696672916~hmac=0b5a3d793d15d5eccf6f03a04e907baee2f1e59dc4292775fe4e025c871152be"
+                            />
+                            <CloseButton
+                              onClick={() => handleChange("No Feedback")}
+                            />
+                          </Flex>
+
                           <Flex
                             className="box"
                             mb={"5"}
